@@ -4,7 +4,7 @@
 
 Professor: Emdad Ahmed
 
-Office Norton R2-307
+Office: Norton R2-307
 
 Office Hours: Wednesday 1:30pm - 2:15pm
 
