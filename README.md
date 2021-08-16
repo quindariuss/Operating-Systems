@@ -10,6 +10,10 @@ Office Hours: Wednesday 1:30pm - 2:15pm
 
 ---
 
+### Course Description
+
+This course introduces the fundamental concepts and principles of operating systems. Topics covered include system performance, process and threads, multiprogramming, scheduling, memory management, synchronization, deadlocks, file systems, Input/output systems. Additional topics: security and protection, network and distributed OS.
+
 ### Goals for Course
 
 1. [ ] Carry out the key steps involved in loading and starting an operating system.
