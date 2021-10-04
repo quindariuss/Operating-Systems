@@ -1,0 +1,104 @@
+\documentclass{article}
+\title{Midterm Exam: Operating Systems}
+\author{Quin'darius Lyles-Woods}
+\begin{document}
+\maketitle
+
+\section{How does the kernel know if an application is in an infinite loop?}
+It can tell through the kernel and its interrupt driven hardware and software. It will catch it through an exception or trap.
+\section{Linux file has three levels of security associated with it that matches the three classes of users that may access that file. What are those?}
+
+\begin{itemize}
+	\item Owner
+	\begin{itemize}
+		\item Read
+		\item Write
+		\item Execute
+	\end{itemize}
+	\item Group
+	\begin{itemize}
+		\item Read
+		\item Write
+		\item Execute
+	\end{itemize}
+	\item Other
+	\begin{itemize}
+		\item Read
+		\item Write
+		\item Execute
+	\end{itemize}
+\end{itemize}
+
+\section{All computers follow roughly the same set of steps to transition from a power-off state to a running state. Can you enumerate the steps of the booting sequence?}
+\begin{verbatim}
+                           +----------------------+                                      
+                           |                      |                                      
+                           |                      |                                      
++----------------------+   |                      |                                      
+|o o o                 |   |  Loading the Kernel  |           Running                    
++----------------------+   |     Into Memory      |------------Kernel-----+              
+|                      |   |                      |                       |              
+|                      |   |                      |                       |              
+|    Power is Off      |   |                      |                       v              
+|                      |   +----------------------+         +---------------------------+
+|                      |               ^                    |                           |
+|                      |               |                    |                           |
++----------------------+           Locates                  |   System Boot Complete    |
+            |                       Kernel                  |                           |
+            |                          |                    |                           |
+            |                          |                    |                           |
+            |                          |                    +---------------------------+
+            |                          |                                                 
+            |            +--------------------------+                                    
+        Power On         |                          |                                    
+            |            |                          |                                    
+            |            |  Fixed Memory Location   |                                    
+            |            |      That Contains:      |                                    
+            +----------->|        Bootloader        |                                    
+                         |           BIOS           |                                    
+                         |                          |                                    
+                         |                          |                                    
+                         |                          |                                    
+                         +--------------------------+                                    
+\end{verbatim}
+\pagebreak
+\section{Output redirection in Linux/UNIX system. We use \(>\) as well as \(>>\) as the output direction. What is the semantic difference between the two option switches?}
+You take the output of a program and write it to a file the manner in which is done is discussed below.
+\begin{itemize}
+	\item [\(>\)] This is used for writing to a file and if the file already exist it will overwrite it.
+	\item [\(>>\)] This is used for writing to a file and if the file already exist it will append to the file.
+\end{itemize}
+\section{What does the command \texttt{chmod 765 foo} tell the computer to do?}
+Chmod is a program that defines the permissions of files and directories. 
+\begin{itemize}
+	\item [7: Owner] Read Write and Execute
+	\item [6: Group] Read and Write
+	\item [5: Other] Read Only
+\end{itemize}
+So the command means that the owner has full access, group only read and write and the others group only read only.
+\section{What do you mean by big-endian and little-endian system?}
+
+\section{Keeping in mind the various definitions of \textbf{operating system}, consider whether the operating system should include applications such as web browsers and mail programs. Argue both that it should and that it should not, and support your answers.}
+
+\section{Explain the difference between a batch processing and multiprogramming.}
+
+\section{What is the purpose of the UNIX pipe command, i.e., vertical bar character \(|\)}
+
+\section{Which of the following scheduling algorithms could result in starvation?}
+
+\section{What do you know about BIOS? In the class we discussed that PC/BIOS PROM monitor is rather limited in its ability to access the system hardware. What new standard is being proposed to replace the traditional legacy BIOS?}
+
+\section{What is the purpose of interrupts? What are the differences between a trap and an interrupt? What is the use of each function? How are multiple interrupts dealt with? Can traps be generated intentionally by a user program? If so, for what purpose?}
+
+\section{What is the purpose of system calls, and how do system calls relate to the OS and to the concept of dual-mode (kernel mode and user mode) operation?}
+
+\section{Why do some operating systems store the operating system in firmware, while others store it on disk?}
+
+\section{Label the figure}
+
+\section{Explain the figure}
+
+\section{Explain different parts of the memory and what is the purpose of those memory.}
+
+\section{Using Amdalh’s Law, calculate the speedup gain of an application that has 60 percent parallel component for (a) two processing cores and (b) four processing cores.}
+\end{document}
