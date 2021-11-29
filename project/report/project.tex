@@ -1,0 +1,175 @@
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{forest}
+\usepackage{amsmath}
+\usepackage{multicol}
+\begin{document}
+\include{titlepage.tex}
+\tableofcontents
+\pagebreak
+\section{Introduction}
+Within this report will be a write up of the construction of an Operating System Simulator.
+Throughout I will describe the components necessary for such an simulator.
+There are approximately 13-15 individual modules that make up such a program and I will shew to explain them all within their proper specifications.
+\part{Programs}
+\section{Memory System}
+The memory system varies from computer to computer but in the particular program we will have the following.
+
+\begin{itemize}
+	\item Simulated Registers
+	\item Simulated Ram (To be called memory)
+	\item Program to get data from the ram efficiently
+	\item Program to convert between hex values
+\end{itemize}
+\section{Driver}
+The Driver is a fairly simple piece of the operating system.
+The Driver is meant to be the main thread of the this simulated operating system.
+Its job is this operating system will be to call the loader into the program.
+This will allow the operating system to load user programs in a program-file.
+Typically the driver will be the software that loads the software for our \textbf{hardware}.
+Alas, since we are simulating the software on top of software it will be written to the program file.
+
+\subsection{Pseudocode}
+
+\begin{lstlisting}
+Driver
+	{
+		loader();
+		loop
+			scheduler();
+			dispatcher();
+			CPU();
+			waitforinterrupt();
+		endloop;
+	}
+\end{lstlisting}
+Within the pseudocode there are a lot of things that are not defined.
+This is because they will be described a little bit later on in the report.
+Although you can view all the components within the \textbf{Content} section of this paper.
+
+\section{Loader}
+The loader has another simple but crucial role with the simulated operating system.
+The loader will load all the needed program files that are in the program
+
+\subsection{Pseudocode}
+\begin{lstlisting}
+while (scan != EOF) do
+{
+	read-file();
+	program-attributes();
+	hex-instructions();
+}
+\end{lstlisting}
+
+\section{Scheduler}
+The scheduler is a program that loads programs from the disk into the \textbf{RAM}.
+The scheduler does this out of priority of the program.
+The scheduler is able to load one or multiple programs into the \textbf{memory} or \textbf{RAM}.
+\section{Dispatcher}
+The dispatcher, like that of the loader, is a very simple one.
+The job of the dispatcher is to assign the simulated CPU jobs.
+Our Operating System will call the CPU to execute such jobs.
+\section{Memory}
+The memory is the \textbf{RAM} that we have been talking about throughout the report so far.
+Of course the basic function of ram is to be Random-Access-Memory.
+It would be just that within our operating system as well.
+Taking the program given to it be the scheduler.
+
+\section{Effective Address}
+The effective address will help us identify the actual address of the unit that is being called.
+So you can say maybe the CPU can be one of the units.
+
+\subsection{Pseudocode}
+\begin{lstlisting}
+function direct-addressing( int num) => EA
+{
+	return C(base-reg)+D;
+}
+
+function indirect-addressing( int num) => EA
+{
+	return C(base-reg)+C(I-reg)+D;
+}
+\end{lstlisting}
+
+\section{Fetch}
+The part of the operating system will get information from the \textbf{RAM}.
+This is all dependent on the CPU's program counter not to be confused with the acronym PC.
+This program will execute before the effective address if this helps the reader with the order of operations.
+
+\section{Decode}
+The part of the operating system called decode will do just that.
+The decode part of the operating system will be working in concert with the CPU.
+This will have to be loaded correctly in the registers or whatever data-structures.
+
+\section{Execute}
+The execute method of the operating system will be a switch loop for the CPU.
+The execute method will also be incrementing the program counter that we were discussing earlier.
+This part of the operating system will also help the DMA-channel as well.
+
+\part{The CPU}
+\section{DMA-Channel}
+Speaking of the devil, the DMA-Channel also works in concert with the CPU.
+The DMA-Channel will work with the CPU as it called read and write from the ram to the Input and Output instructions.
+Below we will have some examples of these functions.
+\subsection{Pseudocode}
+\begin{lstlisting}
+function read()
+{
+	char character;
+	return character, next(p-rec),buf[next-io]);
+}
+function write()
+{
+	char character;
+	return character, next(p-rec),buf[next-io]);
+}
+\end{lstlisting}
+The character is the DMA controller.
+The p-rec is the \textbf{RAM} address of where the physical data is going to be "transferred".
+The buf is the startign address of the \textbf{RAM} buffer.
+\begin{lstlisting}
+DMA()
+{
+	loop
+	{
+		switch(int type)
+		{
+			case-one: read(character, next(p-rec),buf[next-io]));
+			case-two: write(character, next(p-rec),buf[next-io]));
+		}
+		next-io = next-io + 4;
+	}
+	signal(ComputeOnly)
+}
+\end{lstlisting}
+
+\section{ComputerOnly}
+This section will define the algorithm that will be the instruction cycle with a dynamic relocation of the program.
+\begin{lstlisting}
+\end{lstlisting}
+
+\part{Multiprocessing Architecture}
+\section{Multiprocessor Architecture}
+So for the project we are designing this architecture while being able to be a distributed and parallel.
+This will be done by getting the CPU the we designed in the fist part of the report.
+We will then to make it a multiprocessing and distributed and paralleled architecture.
+The multiprocessor dispatcher or the m dispatcher, is going to extend the single CPU dispatcher and use that to scale off the original CPU.
+This allows the separation of the \textbf{RAM}
+We need to make sure that we have all the data separated because many things have depend on having a true data source.
+
+\section{Multiprocessor Memory Management}
+Since we will be splitting the memory across all of how ever many CPU's we want to have in the simulator.
+With this specification we will need to have the data be appropriately separated.
+This is done for the simplicity because the other solutions could be their own paper.
+\section{Multiprocessor Program Cache}
+Unlike the memory the cache needs to a unified program for the CPU.
+This is needed because the m-dispatcher assigns a process to the CPU.
+A CPU will obtain task in this distributed and paralleled operating system by using the shared cache memory.
+When the CPU executes the task for the operating system a note will be made.
+The note will tell where the address is within the cache memory.
+Then that is when the information is sent to the Memory Management System.
+Within the memory management system the data will be split between the CPU's.
+\end{document}
